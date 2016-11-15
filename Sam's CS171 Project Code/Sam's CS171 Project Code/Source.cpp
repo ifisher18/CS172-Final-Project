@@ -88,7 +88,7 @@ void lookAround(int x, int y) {
 	if (x == 2 && y == 2) {// middle of the board
 		cout << "Its a old, run-down shack, in the middle of the desert. There are a few bushes laying around. You see a note on the ground, it says in poorly written handwriting, \" come see Gorlax 2 da west \"\n";
 	}
-	else if (x == 4 && y == 4) { // if the character is in...
+	else if (x == 4 && y == 4) { // if the character is on space to encounter monster...but needs to acquire inventory to enter
 		if (inventory == 3) {
 			cout << "You hear scary gurgling noises coming from a scary cave, and Gorlax the Crapper runs out! He transforms into a giant monster right before your eyes!" << endl;
 		}
@@ -113,10 +113,10 @@ int kill(int x, int y) {
 
 	return 0;
 }
-void map(int y, int x) {
+void map(int y, int x) { // generates the map
 	string mapArr[5][5];
 
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 5; i++) { // nested for loop that outputs elements on the 5 x 5
 		for (int j = 0; j < 5; j++) {
 			mapArr[i][j] = "[ ]";
 			mapArr[x][y] = "[X]";
@@ -129,7 +129,7 @@ void map(int y, int x) {
 		cout << endl;
 	}
 }
-void talk(int x, int y) {
+void talk(int x, int y) { // talk function that bases the amount of the characters inventory on the response Gorlax gives
 	if (x == 0 && y == 2) {
 		if (inventory == 0) {
 			cout << "Gorlax says \"I see you are new here. If you want to survive this desert, you'll need a weapon. I happen to have a weapon, and I'll give it to you if you collect me some treasure. I believe there is some out in the desert. Try checking to the northeast.\"" << endl << setw(30) << "You should find that treasure." << endl;
@@ -141,7 +141,7 @@ void talk(int x, int y) {
 		}
 	}
 }
-int get(int x, int y) {
+int get(int x, int y) { // gets the objects treasure, sword, head
 	if (x == 4 && y == 1) {
 		cout << "You pick up the treasure." << endl;
 		inventory = 2;
